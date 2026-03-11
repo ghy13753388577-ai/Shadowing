@@ -1,0 +1,7 @@
+{
+  "name": "ShadowEcho: AI English Shadowing",
+  "description": "Master English pronunciation with AI-powered shadowing practice and real-time feedback.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
