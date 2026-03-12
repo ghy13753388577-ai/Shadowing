@@ -1,7 +1,15 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Segment, AssessmentResult } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const getApiKey = () => {
+  const key = process.env.GEMINI_API_KEY;
+  if (!key) {
+    console.warn("GEMINI_API_KEY is missing. Please set it in your environment variables.");
+  }
+  return key || "MISSING_API_KEY";
+};
+
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 export async function transcribeAudio(audioBlob: Blob): Promise<Segment[]> {
   console.log("Starting transcription for blob:", audioBlob.type, audioBlob.size);
